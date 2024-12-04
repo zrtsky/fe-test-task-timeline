@@ -17,6 +17,26 @@ Create a simple **planning screen** that includes the following features:
     - Use **fake data** to populate the planning screen dynamically (no need for a backend).
     - Ensure data updates in real-time when an item is dragged, dropped, or modified.
 
+## Pre Requirements
+Need to have Node.js and Bun installed on your machine.
+
+- Node.js: [Download Node.js](https://nodejs.org/en/download/)
+- Bun: [Download Bun](https://bun.sh/)
+
+## Installation
+
+```bash
+# Install dependencies
+bun i
+
+# Run the development server
+bun dev
+# or
+dun dev:turbo
+
+# Open http://localhost:3000 with your browser to see the result.
+```
+
 ## Tech Stack
 
 - [Next.js 15 (React 19)](https://nextjs.org/)
