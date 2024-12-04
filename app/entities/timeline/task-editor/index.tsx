@@ -15,7 +15,7 @@ type TimelineTaskEditorProps = {
   onSubmit: (task: Task) => void
 }
 
-// PORTALS DOESN'T WORK CORRECTLY WITH NEXT.JS
+// PORTALS DOESN'T WORK CORRECTLY WITH NEXT.JS 15
 
 export const TimelineTaskEditor: FC<TimelineTaskEditorProps> = ({ task, onClose, onSubmit }) => {
   const wrapperRef = useRef<HTMLDivElement>(null)

@@ -2,20 +2,16 @@
 
 import { Moon, Sun } from 'lucide-react'
 import { useTheme } from 'next-themes'
-import { FC, useCallback } from 'react'
+import { FC } from 'react'
 
 import { Button } from '@/shared/ui'
 
 export const DarkModeToggler: FC = () => {
   const { setTheme, theme } = useTheme()
 
-  const handleToggleTheme = useCallback(() => {
-    if (theme === 'light') {
-      setTheme('dark')
-    } else {
-      setTheme('light')
-    }
-  }, [setTheme, theme])
+  const handleToggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light')
+  }
 
   return (
     <Button variant="outline" onClick={handleToggleTheme}>

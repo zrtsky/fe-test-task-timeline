@@ -16,6 +16,21 @@ type TaskFormProps = {
   onClose: () => void
 }
 
+const StatusOptions = [
+  {
+    label: 'To do',
+    value: 'todo',
+  },
+  {
+    label: 'In Progress',
+    value: 'in-progress',
+  },
+  {
+    label: 'Done',
+    value: 'done',
+  },
+] as const
+
 export const TaskForm: FC<TaskFormProps> = ({ onClose, onSubmit, task }) => {
   const values = pick(task, ['title', 'status', 'durationInHrs', 'price', 'description'])
   type Inputs = typeof values
@@ -76,24 +91,14 @@ export const TaskForm: FC<TaskFormProps> = ({ onClose, onSubmit, task }) => {
               defaultValue={values.status}
               className="flex flex-wrap gap-x-6"
             >
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem value="todo" id="todo" />
-                <Label htmlFor="todo" className="cursor-pointer">
-                  To do
-                </Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem value="in-progress" id="in-progress" />
-                <Label htmlFor="in-progress" className="cursor-pointer">
-                  In Progress
-                </Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem value="done" id="done" />
-                <Label htmlFor="done" className="cursor-pointer">
-                  Done
-                </Label>
-              </div>
+              {StatusOptions.map(({ label, value }) => (
+                <div key={value} className="flex items-center space-x-2">
+                  <RadioGroupItem value={value} id={value} />
+                  <Label htmlFor={value} className="cursor-pointer">
+                    {label}
+                  </Label>
+                </div>
+              ))}
             </RadioGroup>
           </div>
         </CardContent>
