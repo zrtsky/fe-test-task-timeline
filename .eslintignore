@@ -1,0 +1,12 @@
+# Ignore node_modules folder
+node_modules/
+
+# Ignore build output directories
+dist/
+build/
+.next
+.next/**/*
+
+# Other ignored files
+postcss.config.js
+/src/app/(payload)/admin/importMap.js
