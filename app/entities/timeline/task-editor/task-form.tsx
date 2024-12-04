@@ -16,7 +16,7 @@ type TaskFormProps = {
   onClose: () => void
 }
 
-const StatusOptions = [
+const STATUS_OPTIONS = [
   {
     label: 'To do',
     value: 'todo',
@@ -91,7 +91,7 @@ export const TaskForm: FC<TaskFormProps> = ({ onClose, onSubmit, task }) => {
               defaultValue={values.status}
               className="flex flex-wrap gap-x-6"
             >
-              {StatusOptions.map(({ label, value }) => (
+              {STATUS_OPTIONS.map(({ label, value }) => (
                 <div key={value} className="flex items-center space-x-2">
                   <RadioGroupItem value={value} id={value} />
                   <Label htmlFor={value} className="cursor-pointer">
