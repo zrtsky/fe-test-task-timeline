@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import isEmpty from 'lodash/isEmpty'
 import { FC, useEffect, useRef } from 'react'
-import { useClickAway } from 'react-use'
+import { useClickAway, useKey } from 'react-use'
 
 import { Task } from '@/api/timeline-data'
 
@@ -19,7 +19,9 @@ type TimelineTaskEditorProps = {
 
 export const TimelineTaskEditor: FC<TimelineTaskEditorProps> = ({ task, onClose, onSubmit }) => {
   const wrapperRef = useRef<HTMLDivElement>(null)
+
   useClickAway(wrapperRef, onClose)
+  useKey('Escape', onClose)
 
   useEffect(() => {
     setTimeout(
