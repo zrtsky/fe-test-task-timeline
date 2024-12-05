@@ -46,9 +46,10 @@ export const TimelineContextProvider: FC<TimelineDataProps> = ({ children, initi
       .find((task) => task.id === taskId)
     if (!task) return
 
-    const filteredData = copyData.map((data) => {
-      return { ...data, tasks: data.tasks.filter((singleTask) => singleTask.id !== task.id) }
-    })
+    const filteredData = copyData.map((data) => ({
+      ...data,
+      tasks: data.tasks.filter((singleTask) => singleTask.id !== task.id),
+    }))
 
     const newTaskData = filteredData.map((data) => {
       if (data.userId === userId) {
@@ -62,11 +63,12 @@ export const TimelineContextProvider: FC<TimelineDataProps> = ({ children, initi
   }
 
   const deleteTaskById = (taskId: string) => {
-    setData((prevData) => {
-      return prevData.map((data) => {
-        return { ...data, tasks: data.tasks.filter((singleTask) => singleTask.id !== taskId) }
-      })
-    })
+    setData((prevData) =>
+      prevData.map((data) => ({
+        ...data,
+        tasks: data.tasks.filter((singleTask) => singleTask.id !== taskId),
+      })),
+    )
   }
 
   const drawerTask = useMemo(() => {
@@ -78,16 +80,14 @@ export const TimelineContextProvider: FC<TimelineDataProps> = ({ children, initi
 
   const updateTask = (task: Task) => {
     setData((prevData) =>
-      prevData.map((data) => {
-        return {
-          ...data,
-          tasks: data.tasks.map((singleTask) => {
-            if (singleTask.id === task.id) return task
+      prevData.map((data) => ({
+        ...data,
+        tasks: data.tasks.map((singleTask) => {
+          if (singleTask.id === task.id) return task
 
-            return singleTask
-          }),
-        }
-      }),
+          return singleTask
+        }),
+      })),
     )
   }
 
